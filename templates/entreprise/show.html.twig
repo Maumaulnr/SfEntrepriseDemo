@@ -16,11 +16,20 @@
     <h3>Liste des employés</h3>
 
     {% if entreprise.employes | length > 0 %}
-    
-        {% for employe in entreprise.employes %}
-            {{ employe }} <br>
-        {% endfor %}
-
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Employe</th>
+                </tr>
+            </thead>
+            <tbody>   
+            {% for employe in entreprise.employes %}
+                <tr>
+                    <td><a href="{{ path('show_employe', {'id': employe.id}) }}">{{ employe }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     {% else %}
         <p>Aucun salarié dans cette entreprise</p>
     {% endif %}
