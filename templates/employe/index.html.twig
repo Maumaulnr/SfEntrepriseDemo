@@ -3,15 +3,37 @@
 {% block title %}Liste des employés{% endblock %}
 
 {% block body %}
-    <h1>Liste des employés</h1>
+    <h1 class="text-white">Liste des employés</h1>
 
-    <a href="{{ path('new_employe') }}" class="btn btn-success">Ajouter un employé</a><br>
+    <a href="{{ path('new_employe') }}" class="btn btn-success w-25">Ajouter un employé</a>
 
-    {% for employe in employes %}
-        <a href="{{ path('show_employe', {'id': employe.id}) }}">{{ employe }}</a> ({{ employe.entreprise.raisonSociale }}) 
-        <a class="btn btn-warning" href="{{ path('edit_employe', {'id': employe.id}) }}">Edit</a>
-        <a class="btn btn-danger" href="{{ path('delete_employe', {'id': employe.id}) }}">Supprimer</a>
-        <br>
-    {% endfor %}
+    <table class="table table-hover table-responsive">
+        <thead class="table-light">
+            <tr>
+                <th>Employé</th>
+                <th>Entreprise</th>
+                <th>Modifier</th>
+                <th>Suppression</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employe in employes %}
+            <tr>
+                <td>
+                    <a href="{{ path('show_employe', {'id': employe.id}) }}" class="align-middle text-decoration-none">{{ employe }}</a>  
+                </td>
+                <td>
+                    {{ employe.entreprise.raisonSociale }}
+                </td>
+                <td>
+                    <a class="btn btn-warning" href="{{ path('edit_employe', {'id': employe.id}) }}">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="{{ path('delete_employe', {'id': employe.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}

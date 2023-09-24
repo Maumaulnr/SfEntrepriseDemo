@@ -11,16 +11,24 @@
 
     </head>
     <body>
-        <nav>
-            <ul>
-                <li><a href="{{ path('app_entreprise') }}">Liste des entreprises</a></li>
-                <li><a href="{{ path('app_employe') }}">Liste des employés</a></li>
-                {# <li><a href="{{ path('new_entreprise')}}">Ajouter une entreprise</a></li>
-                <li><a href="{{ path('new_employe') }}">Ajouter un employé</a></li> #}
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-2 navbar-shrink" id="mainNav">
+            <div class="container px-4 px-lg-3 gap-4">
+                <img src="{{ asset('img/logo-SfEntrepriseDemo.png') }}" alt="Logo du projet demo entreprise avec symfony" width="250" height="90">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 text-white" href="{{ path('app_entreprise') }}"><strong>Liste des entreprises</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 text-white" href="{{ path('app_employe') }}"><strong>Liste des employés</strong></a>
+                    </li>
+                </ul>
+            </div>
         </nav>
-        <main class="container">
-            {% block body %}{% endblock %}
+        <main class="container d-flex justify-content-center">
+            <img src="{{ asset('img/SfEntrepriseDemoBck-removebg.png') }}" alt="Logo du projet entreprise en symfony" class="img-fluid mx-auto d-block bg-image">
+            <div class="container px-4 px-lg-5 h-100 d-flex flex-column gap-3">
+                {% block body %}{% endblock %}
+            </div>
         </main>
 
 

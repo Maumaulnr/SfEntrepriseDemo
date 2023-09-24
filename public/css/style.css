@@ -1,4 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0e9bb4;
+}
+
 h1 {
     color: rgb(106, 34, 214);
 }
 
+main {
+    padding-top: 150px;
+}
+
+.bg-image {
+    position: fixed;
+    background-position: center;
+    width: 50%;
+    /* height: 100%; */
+    z-index: -1;
+    opacity: 0.6;
+    object-fit: cover;
+}
+
+.nav-item:hover {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.nav-item:hover .nav-link {
+    color: black !important; /* La couleur du texte au survol */
+}
