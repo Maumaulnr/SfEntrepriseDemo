@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+{# Titre que l’on retrouvera dans le block title du fichier base.html.twig #}
 {% block title %}Liste des entreprises{% endblock %}
 
 {% block body %}
@@ -16,9 +17,12 @@
             </tr>
         </thead>
         <tbody>
+            {# boucle pour récupérer le contenu du tableau #}
+            {# syntaxe pour une boucle avec Twig : {% %} #}
             {% for entreprise in entreprises %}
             <tr>
                 <td>
+                    {# {{ entreprise }} -> Affichera dans la vue la liste des entreprises #}
                     <a href="{{ path('show_entreprise', {'id': entreprise.id}) }}" class="align-middle text-decoration-none">{{ entreprise }}</a>
                 </td>
                 <td>

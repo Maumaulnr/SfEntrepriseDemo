@@ -40,12 +40,16 @@ class EmployeType extends AbstractType
                 ]
             ])
             ->add('ville', TextType::class, [
+                // ajouter un employé sans la ville (car on a autorisé le null), on doit ajouter un attribut ‘required’
                 'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
+            // ’entreprise’ fait partie d’une autre entité donc EntityType ::class
+            // indiquer un tableau d’argument en plus
             ->add('entreprise', EntityType::class, [
+                // on importe Entreprise::class
                 'class' => Entreprise::class,
                 'attr' => [
                     'class' => 'form-control'

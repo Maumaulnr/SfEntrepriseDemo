@@ -33,7 +33,7 @@ class Entreprise
 
     #[ORM\OneToMany(mappedBy: 'entreprise', targetEntity: Employe::class, orphanRemoval: true)]
     #[ORM\OrderBy(["nom" => "ASC"])]
-    private Collection $employes;
+    private Collection $employes; // Collection est un tableau car l’entreprise possède plusieurs employés.
 
     public function __construct()
     {

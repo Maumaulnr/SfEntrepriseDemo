@@ -120,8 +120,10 @@ class Employe
 
     public function getAge(): ?string
     {
+        // « \ » devant DateTime sinon il va chercher une méthode qui s’appelle DateTime
         $now = new \DateTime();
         $interval = $this->dateNaissance->diff($now);
+        // Pour le format de l’année, on écrit « %Y » car c’est un objet de la class DateInterval. On renvoie l’âge en année.
         return $interval->format("%Y");
     }
 }

@@ -22,7 +22,10 @@
                     <th>Employe</th>
                 </tr>
             </thead>
-            <tbody>   
+            <tbody>
+            {# Entreprise.employeS → fait référence à la Collection dans Entreprise.php #}
+            {# Entreprise.php : $this->employes = new ArrayCollection() #}
+            {# On affiche les employés de l'entreprise #}
             {% for employe in entreprise.employes %}
                 <tr>
                     <td><a href="{{ path('show_employe', {'id': employe.id}) }}">{{ employe }}</a></td>

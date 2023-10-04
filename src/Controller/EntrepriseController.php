@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EntrepriseController extends AbstractController
 {
+    // Entre parenthèses il s’agit de l’URL qui sera appelée
+    // name: 'app_entreprise' -> fait référence au nom de la méthode en question (on s’en sert par exemple si on veut voir le détail d’une entreprise ou autre)
     #[Route('/entreprise', name: 'app_entreprise')]
     // public function index(EntityManagerInterface $entityManager): Response
     public function index(EntrepriseRepository $entrepriseRepository): Response
@@ -22,6 +24,8 @@ class EntrepriseController extends AbstractController
         // $entreprises = $entrepriseRepository->findAll();
         // SELECT * FROM entreprise WHERE ville = 'STRASBOURG' ORDER BY raisonSociale ASC
         $entreprises = $entrepriseRepository->findBy([], ["raisonSociale" => "ASC"]);
+
+        # « render » fait le lien entre le Controller et la vue
         return $this->render('entreprise/index.html.twig', [
             'entreprises' => $entreprises
         ]);
@@ -37,6 +41,7 @@ class EntrepriseController extends AbstractController
             $entreprise = new Entreprise();
         }
         
+        // $form = … → méthode qui créé le formulaire
         $form = $this->createForm(EntrepriseType::class, $entreprise);
 
         $form->handleRequest($request);
@@ -46,9 +51,9 @@ class EntrepriseController extends AbstractController
             // on récupère les données du formulaire
             $entreprise = $form->getData();
             // prepare PDO
-            $entityManager->persist($entreprise);
+            $entityManager->persist($entreprise); // persist() = prepare()
             // execute PDO
-            $entityManager->flush();
+            $entityManager->flush(); // flush() = execute()
 
             return $this->redirectToRoute('app_entreprise');
 
@@ -74,11 +79,13 @@ class EntrepriseController extends AbstractController
 
     }
     
+    // Route avec /entreprise/{id} car on veut le détail d’UNE entreprise
     #[Route('/entreprise/{id}', name: 'show_entreprise')]
     public function show(Entreprise $entreprise): Response 
     {
 
         return $this->render('entreprise/show.html.twig', [
+            // on enlève les « s » car il s’agit d’un seul objet entreprise
             'entreprise' => $entreprise
         ]);
 

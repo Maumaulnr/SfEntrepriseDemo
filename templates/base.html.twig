@@ -27,6 +27,7 @@
         <main class="container d-flex justify-content-center">
             <img src="{{ asset('img/SfEntrepriseDemoBck-removebg.png') }}" alt="Logo du projet entreprise en symfony" class="img-fluid mx-auto d-block bg-image">
             <div class="container px-4 px-lg-5 h-100 d-flex flex-column gap-3">
+                {# Ici sera injecté l’argument que l’on aura passé dans EntrepriseController ('controller_name' => 'EntrepriseController') #}
                 {% block body %}{% endblock %}
             </div>
         </main>
